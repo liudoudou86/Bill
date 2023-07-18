@@ -343,6 +343,12 @@ if (uni.restoreGlobal) {
       style: {
         navigationBarTitleText: "注册用户"
       }
+    },
+    {
+      path: "pages/index/logging/logging",
+      style: {
+        navigationBarTitleText: "录入金额"
+      }
     }
   ];
   const globalStyle = {
@@ -2893,13 +2899,11 @@ if (uni.restoreGlobal) {
     }
     return target;
   };
-  const _sfc_main$8 = {
+  const _sfc_main$9 = {
     data() {
-      return {
-        title: "Hello"
-      };
+      return {};
     },
-    onLoad() {
+    onShow() {
       this.getSystemInfo();
     },
     methods: {
@@ -2910,17 +2914,16 @@ if (uni.restoreGlobal) {
             that.deviceId = res.deviceId;
           },
           fail: function(err) {
-            formatAppLog("log", "at pages/index/index.vue:29", err);
+            formatAppLog("log", "at pages/index/index.vue:28", err);
           }
         });
-        formatAppLog("log", "at pages/index/index.vue:32", "本机设备ID：" + this.deviceId);
+        formatAppLog("log", "at pages/index/index.vue:31", "本机设备ID：" + this.deviceId);
         Ds.callFunction({
           name: "readUserInfo",
           data: {
             deviceId: this.deviceId
           }
         }).then((res) => {
-          formatAppLog("log", "at pages/index/index.vue:40", res);
           const data = res.result.data;
           data[0].deviceId;
         }).catch((err) => {
@@ -2929,29 +2932,32 @@ if (uni.restoreGlobal) {
             content: "请先注册",
             showCancel: false
           });
+          uni.switchTab({
+            url: "../setting/setting",
+            success: function(res) {
+            },
+            fail: function(err2) {
+              formatAppLog("log", "at pages/index/index.vue:54", "回调失败", err2);
+            }
+          });
         });
       }
     }
   };
-  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("view", { class: "content" }, [
-      vue.createElementVNode("image", {
-        class: "logo",
-        src: "/static/logo.png"
-      }),
-      vue.createElementVNode("view", { class: "text-area" }, [
-        vue.createElementVNode(
-          "text",
-          { class: "title" },
-          vue.toDisplayString($data.title),
-          1
-          /* TEXT */
-        )
+  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("view", null, [
+      vue.createElementVNode("view", { class: "uni-btn-v" }, [
+        vue.createElementVNode("navigator", {
+          url: "/pages/index/logging/logging",
+          "hover-class": "navigator-hover"
+        }, [
+          vue.createElementVNode("button", { type: "primary" }, "录入金额")
+        ])
       ])
     ]);
   }
-  const PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$7], ["__file", "D:/Coding/Bill/pages/index/index.vue"]]);
-  const _sfc_main$7 = {
+  const PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$8], ["__file", "D:/Coding/Bill/pages/index/index.vue"]]);
+  const _sfc_main$8 = {
     name: "uniTh",
     options: {
       virtualHost: true
@@ -3112,7 +3118,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(
       "view",
       {
@@ -3126,8 +3132,8 @@ if (uni.restoreGlobal) {
       /* CLASS, STYLE */
     );
   }
-  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$6], ["__scopeId", "data-v-bf970acd"], ["__file", "D:/Coding/Bill/uni_modules/uni-table/components/uni-th/uni-th.vue"]]);
-  const _sfc_main$6 = {
+  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$7], ["__scopeId", "data-v-bf970acd"], ["__file", "D:/Coding/Bill/uni_modules/uni-table/components/uni-th/uni-th.vue"]]);
+  const _sfc_main$7 = {
     name: "TableCheckbox",
     emits: ["checkboxSelected"],
     props: {
@@ -3192,7 +3198,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", {
       class: "uni-table-checkbox",
       onClick: _cache[0] || (_cache[0] = (...args) => $options.selected && $options.selected(...args))
@@ -3216,8 +3222,8 @@ if (uni.restoreGlobal) {
       ]))
     ]);
   }
-  const tableCheckbox = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$5], ["__scopeId", "data-v-25e435b1"], ["__file", "D:/Coding/Bill/uni_modules/uni-table/components/uni-tr/table-checkbox.vue"]]);
-  const _sfc_main$5 = {
+  const tableCheckbox = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$6], ["__scopeId", "data-v-25e435b1"], ["__file", "D:/Coding/Bill/uni_modules/uni-table/components/uni-tr/table-checkbox.vue"]]);
+  const _sfc_main$6 = {
     name: "uniTr",
     components: { tableCheckbox },
     props: {
@@ -3304,7 +3310,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_table_checkbox = vue.resolveComponent("table-checkbox");
     return vue.openBlock(), vue.createElementBlock("view", { class: "uni-table-tr" }, [
       $data.selection === "selection" ? (vue.openBlock(), vue.createElementBlock(
@@ -3327,8 +3333,8 @@ if (uni.restoreGlobal) {
       vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
     ]);
   }
-  const __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$4], ["__scopeId", "data-v-b48b3e32"], ["__file", "D:/Coding/Bill/uni_modules/uni-table/components/uni-tr/uni-tr.vue"]]);
-  const _sfc_main$4 = {
+  const __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$5], ["__scopeId", "data-v-b48b3e32"], ["__file", "D:/Coding/Bill/uni_modules/uni-table/components/uni-tr/uni-tr.vue"]]);
+  const _sfc_main$5 = {
     name: "uniTd",
     options: {
       virtualHost: true
@@ -3377,7 +3383,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(
       vue.Fragment,
       null,
@@ -3400,8 +3406,8 @@ if (uni.restoreGlobal) {
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$3], ["__scopeId", "data-v-edae4802"], ["__file", "D:/Coding/Bill/uni_modules/uni-table/components/uni-td/uni-td.vue"]]);
-  const _sfc_main$3 = {
+  const __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$4], ["__scopeId", "data-v-edae4802"], ["__file", "D:/Coding/Bill/uni_modules/uni-table/components/uni-td/uni-td.vue"]]);
+  const _sfc_main$4 = {
     name: "uniTable",
     options: {
       virtualHost: true
@@ -3642,7 +3648,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(
       "view",
       {
@@ -3692,8 +3698,8 @@ if (uni.restoreGlobal) {
       /* CLASS */
     );
   }
-  const __easycom_3 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$2], ["__scopeId", "data-v-c1ea9b5d"], ["__file", "D:/Coding/Bill/uni_modules/uni-table/components/uni-table/uni-table.vue"]]);
-  const _sfc_main$2 = {
+  const __easycom_3 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$3], ["__scopeId", "data-v-c1ea9b5d"], ["__file", "D:/Coding/Bill/uni_modules/uni-table/components/uni-table/uni-table.vue"]]);
+  const _sfc_main$3 = {
     data() {
       return {
         tableData: [],
@@ -3731,7 +3737,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_uni_th = resolveEasycom(vue.resolveDynamicComponent("uni-th"), __easycom_0);
     const _component_uni_tr = resolveEasycom(vue.resolveDynamicComponent("uni-tr"), __easycom_1);
     const _component_uni_td = resolveEasycom(vue.resolveDynamicComponent("uni-td"), __easycom_2);
@@ -3839,14 +3845,14 @@ if (uni.restoreGlobal) {
             url: "/pages/setting/register/register",
             "hover-class": "navigator-hover"
           }, [
-            vue.createElementVNode("button", { type: "default" }, "注册用户")
+            vue.createElementVNode("button", { type: "primary" }, "注册用户")
           ])
         ])
       ])
     ]);
   }
-  const PagesSettingSetting = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$1], ["__file", "D:/Coding/Bill/pages/setting/setting.vue"]]);
-  const _sfc_main$1 = {
+  const PagesSettingSetting = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$2], ["__file", "D:/Coding/Bill/pages/setting/setting.vue"]]);
+  const _sfc_main$2 = {
     data() {
       return {};
     },
@@ -3899,6 +3905,9 @@ if (uni.restoreGlobal) {
                 content: "注册成功",
                 showCancel: false
               });
+              uni.navigateBack({
+                delta: 1
+              });
             }).catch((err) => {
               uni.hideLoading();
               uni.showModal({
@@ -3911,7 +3920,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "form" }, [
       vue.createElementVNode("view", { class: "inputWrapper" }, [
         vue.createElementVNode(
@@ -3951,10 +3960,127 @@ if (uni.restoreGlobal) {
       ])
     ]);
   }
-  const PagesSettingRegisterRegister = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__file", "D:/Coding/Bill/pages/setting/register/register.vue"]]);
+  const PagesSettingRegisterRegister = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$1], ["__file", "D:/Coding/Bill/pages/setting/register/register.vue"]]);
+  const _sfc_main$1 = {
+    data() {
+      return {};
+    },
+    onLoad() {
+    },
+    methods: {
+      formSubmit: function(e) {
+        const that = this;
+        uni.getSystemInfo({
+          success: function(res) {
+            that.deviceId = res.deviceId;
+          },
+          fail: function(err) {
+            formatAppLog("log", "at pages/index/logging/logging.vue:42", err);
+          }
+        });
+        formatAppLog("log", "at pages/index/logging/logging.vue:45", "本机设备ID：" + this.deviceId);
+        Ds.callFunction({
+          name: "readUserInfo",
+          data: {
+            deviceId: this.deviceId
+          }
+        }).then((res) => {
+          const data = res.result.data;
+          const readUserName = data[0].userName;
+          const formData = e.detail.value;
+          formatAppLog("log", "at pages/index/logging/logging.vue:57", "提交表单数据：" + JSON.stringify(e.detail.value));
+          Ds.callFunction({
+            name: "insertUserMoney",
+            data: {
+              userName: readUserName,
+              type: formData.type,
+              amount: formData.inputMoney
+            }
+          }).then((res2) => {
+            formatAppLog("log", "at pages/index/logging/logging.vue:67", res2);
+            uni.hideLoading();
+            uni.showModal({
+              content: "保存成功",
+              showCancel: false
+            });
+            uni.navigateBack({
+              delta: 1
+            });
+          }).catch((err) => {
+            formatAppLog("log", "at pages/index/logging/logging.vue:77", err);
+            uni.hideLoading();
+            uni.showModal({
+              content: "保存失败",
+              showCancel: false
+            });
+          });
+        }).catch((err) => {
+          formatAppLog("log", "at pages/index/logging/logging.vue:85", err);
+        });
+      },
+      formReset: function(e) {
+        formatAppLog("log", "at pages/index/logging/logging.vue:89", "清空数据");
+      }
+    }
+  };
+  function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("view", { class: "form" }, [
+      vue.createElementVNode("view", { class: "uni-padding-wrap uni-common-mt" }, [
+        vue.createElementVNode(
+          "form",
+          {
+            onSubmit: _cache[1] || (_cache[1] = (...args) => $options.formSubmit && $options.formSubmit(...args)),
+            onReset: _cache[2] || (_cache[2] = (...args) => $options.formReset && $options.formReset(...args))
+          },
+          [
+            vue.createElementVNode("view", { class: "uni-form-item uni-column" }, [
+              vue.createElementVNode("view", { class: "title" }, "类型："),
+              vue.createElementVNode("radio-group", { name: "type" }, [
+                vue.createElementVNode("label", null, [
+                  vue.createElementVNode("radio", { value: "income" }),
+                  vue.createElementVNode("text", null, "收入")
+                ]),
+                vue.createElementVNode("label", null, [
+                  vue.createElementVNode("radio", { value: "expenditure" }),
+                  vue.createElementVNode("text", null, "支出")
+                ])
+              ]),
+              vue.createElementVNode("view", { class: "title" }, "金额："),
+              vue.createElementVNode(
+                "input",
+                {
+                  class: "uni-input",
+                  name: "inputMoney",
+                  onInput: _cache[0] || (_cache[0] = (...args) => _ctx.inputMoney && _ctx.inputMoney(...args)),
+                  placeholder: "请输入金额"
+                },
+                null,
+                32
+                /* HYDRATE_EVENTS */
+              )
+            ]),
+            vue.createElementVNode("view", { class: "uni-btn-v" }, [
+              vue.createElementVNode("button", {
+                type: "primary",
+                "form-type": "submit"
+              }, "保存提交"),
+              vue.createElementVNode("button", {
+                type: "warn",
+                "form-type": "reset"
+              }, "重置页面")
+            ])
+          ],
+          32
+          /* HYDRATE_EVENTS */
+        )
+      ])
+    ]);
+  }
+  const PagesIndexLoggingLogging = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__file", "D:/Coding/Bill/pages/index/logging/logging.vue"]]);
   __definePage("pages/index/index", PagesIndexIndex);
   __definePage("pages/setting/setting", PagesSettingSetting);
   __definePage("pages/setting/register/register", PagesSettingRegisterRegister);
+  __definePage("pages/index/logging/logging", PagesIndexLoggingLogging);
   const _sfc_main = {
     onLaunch: function() {
       formatAppLog("log", "at App.vue:4", "App Launch");

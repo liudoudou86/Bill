@@ -4,7 +4,7 @@
     		<input class="input" type="text" @input="inputUserName" value="" placeholder="请输入用户名"/>
     	</view>
     	<view class="inputWrapper">
-    		<input class="input" type="text" @input="inputPassWord" value="" placeholder="请输入密码"/>
+    		<input class="input" type="text" @input="inputPassWord" value="" placeholder="请输入密码"/>	
     	</view>
     	<view class="uni-padding-wrap uni-common-mt">
     	    <button type="primary" @click="getUserInfo()" >注册</button>
@@ -66,7 +66,9 @@
             					content: "注册成功",
             					showCancel: false
             				})
-                            
+                            uni.navigateBack({
+                            	delta: 1
+                            });
             				// console.log(res)
             			}).catch((err) =>{
             				uni.hideLoading()

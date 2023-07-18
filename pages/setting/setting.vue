@@ -17,7 +17,7 @@
             </uni-table>
     		<view class="uni-btn-v">
     			<navigator url="/pages/setting/register/register" hover-class="navigator-hover">
-    				<button type="default">注册用户</button>
+    				<button type="primary">注册用户</button>
     			</navigator>
     		</view>
     	</view>
