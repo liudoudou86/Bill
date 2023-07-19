@@ -1,0 +1,1 @@
+<view class="form"><view class="inputWrapper"><input class="input" type="text" bindinput="{{a}}" value="" placeholder="请输入用户名"/></view><view class="inputWrapper"><input class="input" type="text" bindinput="{{b}}" value="" placeholder="请输入密码"/></view><view class="uni-padding-wrap uni-common-mt"><button type="primary" bindtap="{{c}}">注册</button></view></view>
