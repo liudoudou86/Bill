@@ -1,7 +1,7 @@
 <template>
     <view>
-    	<view class="uni-padding-wrap uni-common-mt">
-            <uni-table ref="table" :loading="loading" border stripe emptyText="暂无更多数据">
+    	<view class="container">
+            <uni-table class="table" ref="table" :loading="loading" border stripe emptyText="暂无更多数据">
             	<uni-tr>
             		<uni-th width="100" align="center">用户名</uni-th>
                     <uni-th width="100" align="center">设备ID</uni-th>
@@ -67,7 +67,13 @@
     }
 </script>
 
-<style>
+<style lang="scss">
+    .container {
+        .table {
+            margin-top: 50rpx;
+            height: 900rpx;
+        }
+    }
     .uni-btn-v {
     	 margin-top: 50rpx;
     	 margin-bottom: 50rpx;

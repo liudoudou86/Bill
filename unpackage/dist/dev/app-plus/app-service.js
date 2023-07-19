@@ -329,13 +329,13 @@ if (uni.restoreGlobal) {
     {
       path: "pages/index/index",
       style: {
-        navigationBarTitleText: "主页"
+        navigationBarTitleText: "账户"
       }
     },
     {
       path: "pages/setting/setting",
       style: {
-        navigationBarTitleText: "设置"
+        navigationBarTitleText: "我的"
       }
     },
     {
@@ -367,13 +367,13 @@ if (uni.restoreGlobal) {
         pagePath: "pages/index/index",
         iconPath: "static/tabbar/main.png",
         selectedIconPath: "static/tabbar/mainActive.png",
-        text: "主页"
+        text: "账户"
       },
       {
         pagePath: "pages/setting/setting",
         iconPath: "static/tabbar/setting.png",
         selectedIconPath: "static/tabbar/settingActive.png",
-        text: "设置"
+        text: "我的"
       }
     ]
   };
@@ -672,7 +672,7 @@ if (uni.restoreGlobal) {
   function S(e) {
     return e && "string" == typeof e ? JSON.parse(e) : e;
   }
-  const b = true, k = "app", T = S([]), P = k, A = S('{\n    "address": [\n        "127.0.0.1",\n        "192.168.1.104"\n    ],\n    "debugPort": 9000,\n    "initialLaunchType": "remote",\n    "servePort": 7000,\n    "skipFiles": [\n        "<node_internals>/**",\n        "D:/Coding/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), E = S('[{"provider":"aliyun","spaceName":"bill0718","spaceId":"mp-14a98f01-63d4-4ccd-9efa-9e6430f4ff57","clientSecret":"ju74r3Nly2tmrzJn+Pc//Q==","endpoint":"https://api.next.bspapp.com"}]') || [];
+  const b = true, k = "app", T = S([]), P = k, A = S('{\n    "address": [\n        "127.0.0.1",\n        "192.168.137.82"\n    ],\n    "debugPort": 9000,\n    "initialLaunchType": "remote",\n    "servePort": 7000,\n    "skipFiles": [\n        "<node_internals>/**",\n        "D:/Coding/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), E = S('[{"provider":"aliyun","spaceName":"bill0718","spaceId":"mp-14a98f01-63d4-4ccd-9efa-9e6430f4ff57","clientSecret":"ju74r3Nly2tmrzJn+Pc//Q==","endpoint":"https://api.next.bspapp.com"}]') || [];
   let x = "";
   try {
     x = "__UNI__B99D84B";
@@ -2899,25 +2899,265 @@ if (uni.restoreGlobal) {
     }
     return target;
   };
-  const _sfc_main$9 = {
-    data() {
-      return {};
-    },
-    onShow() {
-      this.getSystemInfo();
+  const _sfc_main$a = {
+    name: "UniCard",
+    emits: ["click"],
+    props: {
+      title: {
+        type: String,
+        default: ""
+      },
+      subTitle: {
+        type: String,
+        default: ""
+      },
+      padding: {
+        type: String,
+        default: "10px"
+      },
+      margin: {
+        type: String,
+        default: "15px"
+      },
+      spacing: {
+        type: String,
+        default: "0 10px"
+      },
+      extra: {
+        type: String,
+        default: ""
+      },
+      cover: {
+        type: String,
+        default: ""
+      },
+      thumbnail: {
+        type: String,
+        default: ""
+      },
+      isFull: {
+        // 内容区域是否通栏
+        type: Boolean,
+        default: false
+      },
+      isShadow: {
+        // 是否开启阴影
+        type: Boolean,
+        default: true
+      },
+      shadow: {
+        type: String,
+        default: "0px 0px 3px 1px rgba(0, 0, 0, 0.08)"
+      },
+      border: {
+        type: Boolean,
+        default: true
+      }
     },
     methods: {
-      getSystemInfo() {
+      onClick(type) {
+        this.$emit("click", type);
+      }
+    }
+  };
+  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock(
+      "view",
+      {
+        class: vue.normalizeClass(["uni-card", { "uni-card--full": $props.isFull, "uni-card--shadow": $props.isShadow, "uni-card--border": $props.border }]),
+        style: vue.normalizeStyle({ "margin": $props.isFull ? 0 : $props.margin, "padding": $props.spacing, "box-shadow": $props.isShadow ? $props.shadow : "" })
+      },
+      [
+        vue.createCommentVNode(" 封面 "),
+        vue.renderSlot(_ctx.$slots, "cover", {}, () => [
+          $props.cover ? (vue.openBlock(), vue.createElementBlock("view", {
+            key: 0,
+            class: "uni-card__cover"
+          }, [
+            vue.createElementVNode("image", {
+              class: "uni-card__cover-image",
+              mode: "widthFix",
+              onClick: _cache[0] || (_cache[0] = ($event) => $options.onClick("cover")),
+              src: $props.cover
+            }, null, 8, ["src"])
+          ])) : vue.createCommentVNode("v-if", true)
+        ], true),
+        vue.renderSlot(_ctx.$slots, "title", {}, () => [
+          $props.title || $props.extra ? (vue.openBlock(), vue.createElementBlock("view", {
+            key: 0,
+            class: "uni-card__header"
+          }, [
+            vue.createCommentVNode(" 卡片标题 "),
+            vue.createElementVNode("view", {
+              class: "uni-card__header-box",
+              onClick: _cache[1] || (_cache[1] = ($event) => $options.onClick("title"))
+            }, [
+              $props.thumbnail ? (vue.openBlock(), vue.createElementBlock("view", {
+                key: 0,
+                class: "uni-card__header-avatar"
+              }, [
+                vue.createElementVNode("image", {
+                  class: "uni-card__header-avatar-image",
+                  src: $props.thumbnail,
+                  mode: "aspectFit"
+                }, null, 8, ["src"])
+              ])) : vue.createCommentVNode("v-if", true),
+              vue.createElementVNode("view", { class: "uni-card__header-content" }, [
+                vue.createElementVNode(
+                  "text",
+                  { class: "uni-card__header-content-title uni-ellipsis" },
+                  vue.toDisplayString($props.title),
+                  1
+                  /* TEXT */
+                ),
+                $props.title && $props.subTitle ? (vue.openBlock(), vue.createElementBlock(
+                  "text",
+                  {
+                    key: 0,
+                    class: "uni-card__header-content-subtitle uni-ellipsis"
+                  },
+                  vue.toDisplayString($props.subTitle),
+                  1
+                  /* TEXT */
+                )) : vue.createCommentVNode("v-if", true)
+              ])
+            ]),
+            vue.createElementVNode("view", {
+              class: "uni-card__header-extra",
+              onClick: _cache[2] || (_cache[2] = ($event) => $options.onClick("extra"))
+            }, [
+              vue.createElementVNode(
+                "text",
+                { class: "uni-card__header-extra-text" },
+                vue.toDisplayString($props.extra),
+                1
+                /* TEXT */
+              )
+            ])
+          ])) : vue.createCommentVNode("v-if", true)
+        ], true),
+        vue.createCommentVNode(" 卡片内容 "),
+        vue.createElementVNode(
+          "view",
+          {
+            class: "uni-card__content",
+            style: vue.normalizeStyle({ padding: $props.padding }),
+            onClick: _cache[3] || (_cache[3] = ($event) => $options.onClick("content"))
+          },
+          [
+            vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
+          ],
+          4
+          /* STYLE */
+        ),
+        vue.createElementVNode("view", {
+          class: "uni-card__actions",
+          onClick: _cache[4] || (_cache[4] = ($event) => $options.onClick("actions"))
+        }, [
+          vue.renderSlot(_ctx.$slots, "actions", {}, void 0, true)
+        ])
+      ],
+      6
+      /* CLASS, STYLE */
+    );
+  }
+  const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$9], ["__scopeId", "data-v-ae4bee67"], ["__file", "D:/Coding/Bill/uni_modules/uni-card/components/uni-card/uni-card.vue"]]);
+  const _sfc_main$9 = {
+    data() {
+      return {
+        scrollTop: 0,
+        old: { scrollTop: 0 },
+        money: "",
+        income: "",
+        expenditure: "",
+        incomeList: [],
+        expenditureList: [],
+        loading: false
+      };
+    },
+    onShow() {
+      this.getMoneyData();
+      this.getPhoneInfo();
+    },
+    methods: {
+      scroll: function(e) {
+        this.old.scrollTop = e.detail.scrollTop;
+      },
+      getMoneyData() {
         const that = this;
         uni.getSystemInfo({
           success: function(res) {
             that.deviceId = res.deviceId;
           },
           fail: function(err) {
-            formatAppLog("log", "at pages/index/index.vue:28", err);
+            formatAppLog("log", "at pages/index/index.vue:57", err);
           }
         });
-        formatAppLog("log", "at pages/index/index.vue:31", "本机设备ID：" + this.deviceId);
+        Ds.callFunction({
+          name: "readUserInfo",
+          data: {
+            deviceId: this.deviceId
+          }
+        }).then((res) => {
+          const data = res.result.data;
+          this.userName = data[0].userName;
+          this.loading = true;
+          Ds.callFunction({
+            name: "readUserMoney",
+            data: {
+              userName: this.userName
+            }
+          }).then((res2) => {
+            this.moneyData = res2.result.data;
+            const jsonData = JSON.parse(JSON.stringify(this.moneyData));
+            let incomeTotal = 0;
+            let expenditureTotal = 0;
+            let incomeData = [];
+            let expenditureData = [];
+            jsonData.forEach((obj) => {
+              if (obj.type === "income") {
+                incomeTotal += parseFloat(obj.amount);
+              }
+              if (obj.type === "expenditure") {
+                expenditureTotal += parseFloat(obj.amount);
+              }
+            });
+            for (let i2 = 0; i2 < jsonData.length; i2++) {
+              if (jsonData[i2].type === "income") {
+                incomeData.push(jsonData[i2].amount);
+              }
+              if (jsonData[i2].type === "expenditure") {
+                expenditureData.push(jsonData[i2].amount);
+              }
+            }
+            this.incomeList = incomeData;
+            this.expenditureList = expenditureData;
+            formatAppLog("log", "at pages/index/index.vue:105", "incomne总和：" + incomeTotal.toFixed(2));
+            formatAppLog("log", "at pages/index/index.vue:106", "expenditure总和：" + expenditureTotal.toFixed(2));
+            formatAppLog("log", "at pages/index/index.vue:107", "incomeList：" + this.incomeList);
+            formatAppLog("log", "at pages/index/index.vue:108", "expenditureList：" + this.expenditureList);
+            this.income = incomeTotal.toFixed(2);
+            this.expenditure = expenditureTotal.toFixed(2);
+            this.money = (this.income - this.expenditure).toFixed(2);
+            this.loading = false;
+            formatAppLog("log", "at pages/index/index.vue:113", res2);
+          }).catch((err) => {
+            formatAppLog("log", "at pages/index/index.vue:115", err);
+          });
+        }).catch((err) => {
+          formatAppLog("log", "at pages/index/index.vue:118", err);
+        });
+      },
+      getPhoneInfo() {
+        const that = this;
+        uni.getSystemInfo({
+          success: function(res) {
+            that.deviceId = res.deviceId;
+          },
+          fail: function(err) {
+            formatAppLog("log", "at pages/index/index.vue:129", err);
+          }
+        });
         Ds.callFunction({
           name: "readUserInfo",
           data: {
@@ -2937,7 +3177,7 @@ if (uni.restoreGlobal) {
             success: function(res) {
             },
             fail: function(err2) {
-              formatAppLog("log", "at pages/index/index.vue:54", "回调失败", err2);
+              formatAppLog("log", "at pages/index/index.vue:156", "回调失败", err2);
             }
           });
         });
@@ -2945,7 +3185,97 @@ if (uni.restoreGlobal) {
     }
   };
   function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_card = resolveEasycom(vue.resolveDynamicComponent("uni-card"), __easycom_0$1);
     return vue.openBlock(), vue.createElementBlock("view", null, [
+      vue.createElementVNode("view", { class: "container" }, [
+        vue.createElementVNode(
+          "h3",
+          null,
+          "【账户余额】: " + vue.toDisplayString($data.money),
+          1
+          /* TEXT */
+        ),
+        vue.createTextVNode(),
+        vue.createElementVNode("br"),
+        vue.createElementVNode(
+          "h4",
+          null,
+          "【收入合计】: " + vue.toDisplayString($data.income) + " 【支出合计】: " + vue.toDisplayString($data.expenditure),
+          1
+          /* TEXT */
+        )
+      ]),
+      vue.createElementVNode("view", null, [
+        vue.createElementVNode("scroll-view", {
+          "scroll-top": $data.scrollTop,
+          "scroll-y": "true",
+          class: "scroll-Y",
+          onScroll: _cache[0] || (_cache[0] = (...args) => $options.scroll && $options.scroll(...args))
+        }, [
+          (vue.openBlock(true), vue.createElementBlock(
+            vue.Fragment,
+            null,
+            vue.renderList($data.incomeList, (item, index) => {
+              return vue.openBlock(), vue.createBlock(
+                _component_uni_card,
+                {
+                  "is-shadow": false,
+                  key: index
+                },
+                {
+                  default: vue.withCtx(() => [
+                    vue.createElementVNode("text", { space: "emsp" }, "收入: +"),
+                    vue.createElementVNode(
+                      "text",
+                      { space: "emsp" },
+                      vue.toDisplayString($data.incomeList[index]),
+                      1
+                      /* TEXT */
+                    )
+                  ]),
+                  _: 2
+                  /* DYNAMIC */
+                },
+                1024
+                /* DYNAMIC_SLOTS */
+              );
+            }),
+            128
+            /* KEYED_FRAGMENT */
+          )),
+          (vue.openBlock(true), vue.createElementBlock(
+            vue.Fragment,
+            null,
+            vue.renderList($data.expenditureList, (item, index) => {
+              return vue.openBlock(), vue.createBlock(
+                _component_uni_card,
+                {
+                  "is-shadow": false,
+                  key: index
+                },
+                {
+                  default: vue.withCtx(() => [
+                    vue.createElementVNode("text", { space: "emsp" }, "支出: -"),
+                    vue.createElementVNode(
+                      "text",
+                      { space: "emsp" },
+                      vue.toDisplayString($data.expenditureList[index]),
+                      1
+                      /* TEXT */
+                    )
+                  ]),
+                  _: 2
+                  /* DYNAMIC */
+                },
+                1024
+                /* DYNAMIC_SLOTS */
+              );
+            }),
+            128
+            /* KEYED_FRAGMENT */
+          ))
+        ], 40, ["scroll-top"])
+      ]),
       vue.createElementVNode("view", { class: "uni-btn-v" }, [
         vue.createElementVNode("navigator", {
           url: "/pages/index/logging/logging",
@@ -3743,8 +4073,9 @@ if (uni.restoreGlobal) {
     const _component_uni_td = resolveEasycom(vue.resolveDynamicComponent("uni-td"), __easycom_2);
     const _component_uni_table = resolveEasycom(vue.resolveDynamicComponent("uni-table"), __easycom_3);
     return vue.openBlock(), vue.createElementBlock("view", null, [
-      vue.createElementVNode("view", { class: "uni-padding-wrap uni-common-mt" }, [
+      vue.createElementVNode("view", { class: "container" }, [
         vue.createVNode(_component_uni_table, {
+          class: "table",
           ref: "table",
           loading: $data.loading,
           border: "",
@@ -4007,7 +4338,7 @@ if (uni.restoreGlobal) {
               delta: 1
             });
           }).catch((err) => {
-            formatAppLog("log", "at pages/index/logging/logging.vue:77", err);
+            formatAppLog("log", "at pages/index/logging/logging.vue:78", err);
             uni.hideLoading();
             uni.showModal({
               content: "保存失败",
@@ -4015,11 +4346,11 @@ if (uni.restoreGlobal) {
             });
           });
         }).catch((err) => {
-          formatAppLog("log", "at pages/index/logging/logging.vue:85", err);
+          formatAppLog("log", "at pages/index/logging/logging.vue:86", err);
         });
       },
       formReset: function(e) {
-        formatAppLog("log", "at pages/index/logging/logging.vue:89", "清空数据");
+        formatAppLog("log", "at pages/index/logging/logging.vue:90", "清空数据");
       }
     }
   };

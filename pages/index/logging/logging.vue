@@ -70,6 +70,7 @@
                     		content: "保存成功",
                     		showCancel: false
                     	})
+                        // 返回上一级菜单
                         uni.navigateBack({
                         	delta: 1
                         });

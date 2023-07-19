@@ -66,6 +66,7 @@
             					content: "注册成功",
             					showCancel: false
             				})
+                            // 返回上一级菜单
                             uni.navigateBack({
                             	delta: 1
                             });
@@ -85,7 +86,7 @@
     }
 </script>
 
-<style>
+<style lang="scss">
     .form{
     	padding: 0 100upx;
     	margin-top: 80px;
