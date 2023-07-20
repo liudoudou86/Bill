@@ -13,7 +13,7 @@
 						</label>
 					</radio-group>
 					<view class="title">金额：</view>
-					<input class="uni-input" name="inputMoney" @input="inputMoney" placeholder="请输入金额" />
+					<input class="uni-input" name="inputMoney" type="digit" inputmode="decimal" @input="inputMoney" placeholder="请输入金额" />
 				</view>
 				<view class="uni-btn-v">
 					<button  type="primary" form-type="submit">保存提交</button>
@@ -61,7 +61,7 @@
                     	data: {
                     		userName : readUserName,
                     		type : formData.type,
-                    		amount : formData.inputMoney,
+                    		amount : Number(formData.inputMoney).toFixed(2),
                     	}
                     }).then((res) => {
                     	console.log(res);
@@ -127,7 +127,7 @@
         margin: 0 auto;
         width: 95%;
     	button {
-    	    margin-top: 50rpx;
+    	    margin-top: 100rpx;
     	    margin-bottom: 50rpx;
     	}
     }

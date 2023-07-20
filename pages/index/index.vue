@@ -102,15 +102,14 @@
                         }
                         this.incomeList = incomeData;
                         this.expenditureList = expenditureData;
-                        console.log('incomne总和：' +  incomeTotal.toFixed(2));
-                        console.log('expenditure总和：' + expenditureTotal.toFixed(2));
-                        console.log('incomeList：' + this.incomeList);
-                        console.log('expenditureList：' + this.expenditureList);
+                        // console.log('incomne总和：' +  incomeTotal.toFixed(2));
+                        // console.log('expenditure总和：' + expenditureTotal.toFixed(2));
+                        // console.log('incomeList：' + this.incomeList);
+                        // console.log('expenditureList：' + this.expenditureList);
                         this.income = incomeTotal.toFixed(2);
                         this.expenditure = expenditureTotal.toFixed(2);
                         this.money = (this.income - this.expenditure).toFixed(2);
                     	this.loading = false;
-                    	console.log(res);
                     }).catch((err) => {
                     	console.log(err);
                     });
@@ -180,23 +179,23 @@
     	 margin-bottom: 50rpx;
     }
     .scroll-Y {
-    		height: 800rpx;
+    		height: 700rpx;
     	}
     	.scroll-view_H {
     		white-space: nowrap;
     		width: 100%;
     	}
     	.scroll-view-item {
-    		height: 800rpx;
-    		line-height: 800rpx;
+    		height: 700rpx;
+    		line-height: 700rpx;
     		text-align: center;
     		font-size: 36rpx;
     	}
     	.scroll-view-item_H {
     		display: inline-block;
     		width: 100%;
-    		height: 800rpx;
-    		line-height: 800rpx;
+    		height: 700rpx;
+    		line-height: 700rpx;
     		text-align: center;
     		font-size: 36rpx;
     	}

@@ -93,26 +93,30 @@
     }
     
     .inputWrapper{
-    	width: 170px;
+    	width: auto;
     	height: 50px;
     	background: #C0C0C0;
     	border-radius: 20px;
     	padding: 0 20px;
-        margin-top: 50rpx;
+        margin-top: 100rpx;
         margin-bottom: 50rpx;
     	margin-left: 50rpx;
     	margin-right: 50rpx;
     }
     
     .inputWrapper .input{
-    	width: 170px;
+    	width: auto;
     	height: 50px;
+        margin-top: 100rpx;
+        margin-bottom: 50rpx;
+        margin-left: 50rpx;
+        margin-right: 50rpx;
     	text-align: center;
     	font-size: 15px;
     }
     
     .uni-padding-wrap {
-        margin-top: 50rpx;
+        margin-top: 300rpx;
         margin-bottom: 50rpx;
     	margin-left: 50rpx;
     	margin-right: 50rpx;

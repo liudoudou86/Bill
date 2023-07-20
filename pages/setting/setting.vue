@@ -71,11 +71,10 @@
     .container {
         .table {
             margin-top: 50rpx;
-            height: 900rpx;
         }
     }
     .uni-btn-v {
-    	 margin-top: 50rpx;
+    	 margin-top: 700rpx;
     	 margin-bottom: 50rpx;
     	 margin-left: 50rpx;
     	 margin-right: 50rpx;

@@ -70,15 +70,10 @@ const _sfc_main = {
           }
           this.incomeList = incomeData;
           this.expenditureList = expenditureData;
-          console.log("incomne总和：" + incomeTotal.toFixed(2));
-          console.log("expenditure总和：" + expenditureTotal.toFixed(2));
-          console.log("incomeList：" + this.incomeList);
-          console.log("expenditureList：" + this.expenditureList);
           this.income = incomeTotal.toFixed(2);
           this.expenditure = expenditureTotal.toFixed(2);
           this.money = (this.income - this.expenditure).toFixed(2);
           this.loading = false;
-          console.log(res2);
         }).catch((err) => {
           console.log(err);
         });

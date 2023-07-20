@@ -672,7 +672,7 @@ if (uni.restoreGlobal) {
   function S(e) {
     return e && "string" == typeof e ? JSON.parse(e) : e;
   }
-  const b = true, k = "app", T = S([]), P = k, A = S('{\n    "address": [\n        "127.0.0.1",\n        "192.168.137.82"\n    ],\n    "debugPort": 9000,\n    "initialLaunchType": "remote",\n    "servePort": 7000,\n    "skipFiles": [\n        "<node_internals>/**",\n        "D:/Coding/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), E = S('[{"provider":"aliyun","spaceName":"bill0718","spaceId":"mp-14a98f01-63d4-4ccd-9efa-9e6430f4ff57","clientSecret":"ju74r3Nly2tmrzJn+Pc//Q==","endpoint":"https://api.next.bspapp.com"}]') || [];
+  const b = true, k = "app", T = S([]), P = k, A = S('{\n    "address": [\n        "127.0.0.1",\n        "192.168.1.106"\n    ],\n    "debugPort": 9000,\n    "initialLaunchType": "remote",\n    "servePort": 7000,\n    "skipFiles": [\n        "<node_internals>/**",\n        "D:/Coding/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), E = S('[{"provider":"aliyun","spaceName":"bill0718","spaceId":"mp-14a98f01-63d4-4ccd-9efa-9e6430f4ff57","clientSecret":"ju74r3Nly2tmrzJn+Pc//Q==","endpoint":"https://api.next.bspapp.com"}]') || [];
   let x = "";
   try {
     x = "__UNI__B99D84B";
@@ -3132,20 +3132,15 @@ if (uni.restoreGlobal) {
             }
             this.incomeList = incomeData;
             this.expenditureList = expenditureData;
-            formatAppLog("log", "at pages/index/index.vue:105", "incomne总和：" + incomeTotal.toFixed(2));
-            formatAppLog("log", "at pages/index/index.vue:106", "expenditure总和：" + expenditureTotal.toFixed(2));
-            formatAppLog("log", "at pages/index/index.vue:107", "incomeList：" + this.incomeList);
-            formatAppLog("log", "at pages/index/index.vue:108", "expenditureList：" + this.expenditureList);
             this.income = incomeTotal.toFixed(2);
             this.expenditure = expenditureTotal.toFixed(2);
             this.money = (this.income - this.expenditure).toFixed(2);
             this.loading = false;
-            formatAppLog("log", "at pages/index/index.vue:113", res2);
           }).catch((err) => {
-            formatAppLog("log", "at pages/index/index.vue:115", err);
+            formatAppLog("log", "at pages/index/index.vue:114", err);
           });
         }).catch((err) => {
-          formatAppLog("log", "at pages/index/index.vue:118", err);
+          formatAppLog("log", "at pages/index/index.vue:117", err);
         });
       },
       getPhoneInfo() {
@@ -3155,7 +3150,7 @@ if (uni.restoreGlobal) {
             that.deviceId = res.deviceId;
           },
           fail: function(err) {
-            formatAppLog("log", "at pages/index/index.vue:129", err);
+            formatAppLog("log", "at pages/index/index.vue:128", err);
           }
         });
         Ds.callFunction({
@@ -3177,7 +3172,7 @@ if (uni.restoreGlobal) {
             success: function(res) {
             },
             fail: function(err2) {
-              formatAppLog("log", "at pages/index/index.vue:156", "回调失败", err2);
+              formatAppLog("log", "at pages/index/index.vue:155", "回调失败", err2);
             }
           });
         });
@@ -4325,7 +4320,7 @@ if (uni.restoreGlobal) {
             data: {
               userName: readUserName,
               type: formData.type,
-              amount: formData.inputMoney
+              amount: Number(formData.inputMoney).toFixed(2)
             }
           }).then((res2) => {
             formatAppLog("log", "at pages/index/logging/logging.vue:67", res2);
@@ -4382,6 +4377,8 @@ if (uni.restoreGlobal) {
                 {
                   class: "uni-input",
                   name: "inputMoney",
+                  type: "digit",
+                  inputmode: "decimal",
                   onInput: _cache[0] || (_cache[0] = (...args) => _ctx.inputMoney && _ctx.inputMoney(...args)),
                   placeholder: "请输入金额"
                 },

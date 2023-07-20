@@ -33,7 +33,7 @@ const _sfc_main = {
           data: {
             userName: readUserName,
             type: formData.type,
-            amount: formData.inputMoney
+            amount: Number(formData.inputMoney).toFixed(2)
           }
         }).then((res2) => {
           console.log(res2);

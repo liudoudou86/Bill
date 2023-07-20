@@ -37,23 +37,23 @@
   margin-bottom: 50rpx;
 }
 .scroll-Y {
-  height: 800rpx;
+  height: 700rpx;
 }
 .scroll-view_H {
   white-space: nowrap;
   width: 100%;
 }
 .scroll-view-item {
-  height: 800rpx;
-  line-height: 800rpx;
+  height: 700rpx;
+  line-height: 700rpx;
   text-align: center;
   font-size: 36rpx;
 }
 .scroll-view-item_H {
   display: inline-block;
   width: 100%;
-  height: 800rpx;
-  line-height: 800rpx;
+  height: 700rpx;
+  line-height: 700rpx;
   text-align: center;
   font-size: 36rpx;
 }
