@@ -5,10 +5,10 @@
         "include": []
     },
     "setting": {
-        "urlCheck": false,
+        "urlCheck": true,
         "es6": true,
-        "postcss": false,
-        "minified": false,
+        "postcss": true,
+        "minified": true,
         "newFeature": true,
         "bigPackageSizeSupport": true,
         "ignoreUploadUnusedFiles": true,
@@ -20,7 +20,7 @@
     },
     "compileType": "miniprogram",
     "libVersion": "2.26.2",
-    "appid": "touristappid",
+    "appid": "wxe9b55030c1f1503a",
     "projectname": "宝宝记账",
     "condition": {},
     "editorSetting": {
